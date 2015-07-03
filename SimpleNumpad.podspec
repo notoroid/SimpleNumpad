@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/notoroid/SimpleNumpad.git", :tag => "v0.1" }
 
   s.source_files  = "Lib/**/*.{h,m}"
-  s.source_files  = "Lib/**/*.{storyboard,xib}"
+  s.resources  = "Lib/**/*.{storyboard,xib}"
   s.framework    = "QuartzCore"
 
   s.requires_arc = true
