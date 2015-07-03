@@ -346,7 +346,7 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
                 _text = [_text stringByAppendingString:@"5"];
                 [_delegate numpadViewDidUpdate:self];
             }else if(_button6View == view){
-                _text = [_text stringByAppendingString:@"8"];
+                _text = [_text stringByAppendingString:@"6"];
                 [_delegate numpadViewDidUpdate:self];
             }else if(_button7View == view){
                 _text = [_text stringByAppendingString:@"7"];
