@@ -25,7 +25,6 @@ Pod::Spec.new do |s|
   s.source_files  = "Lib/**/*.{h,m}"
   s.source_files  = "Lib/**/*.{storyboard,xib}"
   s.framework    = "QuartzCore"
-  s.public_header_files = "Lib/**/*.h"
 
   s.requires_arc = true
 
