@@ -30,6 +30,7 @@
                     ,@{@"title":@"Magenta",@"style":@(IDPNumpadViewControllerStylePeach)}
                     ,@{@"title":@"Green",@"style":@(IDPNumpadViewControllerStyleGreen)}
                     ,@{@"title":@"Purple",@"style":@(IDPNumpadViewControllerStylePurple)}
+                    ,@{@"title":@"Dark",@"style":@(IDPNumpadViewControllerStyleDefault)}
                     ];
     [self.stylePickerView reloadAllComponents];
     
