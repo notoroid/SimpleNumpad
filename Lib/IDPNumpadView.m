@@ -139,21 +139,44 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
             }
         }
     }else{
+        if( self.separatorIntervals == nil ){
+            self.separatorIntervals = @[@2,@2,@2];
+        }
+        
+        NSMutableArray *separaterIntervals = [NSMutableArray arrayWithArray:self.separatorIntervals];
+        __block NSUInteger totalLength = 0;
+        [separaterIntervals enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            totalLength += [obj unsignedIntegerValue];
+        }];
+        
+        
+        NSString *serialText = _text;
+        
+        NSUInteger length = [separaterIntervals.firstObject unsignedIntegerValue];
+        if( separaterIntervals.count > 1 ){
+            [separaterIntervals removeObjectAtIndex:0];
+        }
+     
         unichar characters[3];
         unichar *iterator = characters;
-        unichar *end = characters + 2;
+        unichar *end = characters + length;
         
         NSMutableArray *components = [NSMutableArray array];
         
-        for (NSInteger i = 0; i< _text.length ; i++ ) {
-            unichar character = [_text characterAtIndex:i];
+        for (NSInteger i = 0; i< serialText.length ; i++ ) {
+            unichar character = [serialText characterAtIndex:i];
             *iterator = character;
             iterator++;
             
             if( iterator == end ){
                 *iterator = 0;
-                NSString *string = [NSString stringWithCharacters:characters length:2];
+                NSString *string = [NSString stringWithCharacters:characters length:length];
                 [components addObject:string];
+                
+                length = [separaterIntervals.firstObject unsignedIntegerValue];
+                if( separaterIntervals.count > 1 ){
+                    [separaterIntervals removeObjectAtIndex:0];
+                }
                 
                 iterator = characters;
             }

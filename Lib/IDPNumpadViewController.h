@@ -47,6 +47,7 @@ typedef NS_ENUM(NSInteger, IDPNumpadViewControllerInputStyle )
 @property (readonly,nonatomic) NSString *displayText;
 @property (weak,nonatomic) id<IDPNumpadViewControllerDelegate> delegate;
 @property (assign,nonatomic) BOOL hideNumberDisplay;
+@property (strong,nonatomic) NSArray *separatorIntervals;
 @end
 
 @protocol IDPNumpadViewControllerDelegate <NSObject>
