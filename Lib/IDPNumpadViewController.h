@@ -25,17 +25,25 @@ typedef NS_ENUM(NSInteger, IDPNumpadViewControllerStyle)
     ,IDPNumpadViewControllerStyleCalcApp
 };
 
+typedef NS_ENUM(NSInteger, IDPNumpadViewControllerInputStyle )
+{
+     IDPNumpadViewControllerInputStyleNumber
+    ,IDPNumpadViewControllerInputStyleSerialNumber
+};
+
 @protocol IDPNumpadViewControllerDelegate;
 
 @interface IDPNumpadViewController : UIViewController<IDPNumpadViewDelegate>
 
-+ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style;
-+ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style showNumberDisplay:(BOOL)showNumberDisplay;
++ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle ;
++ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle  showNumberDisplay:(BOOL)showNumberDisplay;
 
 @property(readonly,nonatomic) IDPNumberDisplay *numberDisplay;
 @property(readonly,nonatomic) IDPNumpadView *numpadView;
 
+@property (assign,nonatomic) IDPNumpadViewControllerInputStyle inputStyle;
 @property (assign,nonatomic) CGFloat value;
+@property (strong,nonatomic) NSString *serialNumber;
 @property (readonly,nonatomic) NSString *displayText;
 @property (weak,nonatomic) id<IDPNumpadViewControllerDelegate> delegate;
 @property (assign,nonatomic) BOOL hideNumberDisplay;

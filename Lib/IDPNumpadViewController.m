@@ -18,7 +18,7 @@
 
 @implementation IDPNumpadViewController
 
-+ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style
++ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle
 {
     id viewController = nil;
     @autoreleasepool {
@@ -39,14 +39,18 @@
         
         NSString *identifier = styles[@(style)];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"IDPNumpadViewController" bundle:nil];
-       viewController = [storyboard  instantiateViewControllerWithIdentifier:identifier != nil ? identifier : styles[@(IDPNumpadViewControllerStyleDefault)]];
+        viewController = [storyboard  instantiateViewControllerWithIdentifier:identifier != nil ? identifier : styles[@(IDPNumpadViewControllerStyleDefault)]];
+   
+        IDPNumpadViewController *numpadViewController = viewController;
+        numpadViewController.inputStyle = inputStyle;
+
     }
     return viewController;
 }
 
-+ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style showNumberDisplay:(BOOL)showNumberDisplay
++ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle  showNumberDisplay:(BOOL)showNumberDisplay
 {
-    IDPNumpadViewController *numpadViewController = [IDPNumpadViewController numpadViewControllerWithStyle:style];
+    IDPNumpadViewController *numpadViewController = [IDPNumpadViewController numpadViewControllerWithStyle:style inputStyle:inputStyle];
     if( showNumberDisplay != YES ){
         numpadViewController.hideNumberDisplay = YES;
     }
@@ -71,8 +75,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    _numpadView.text = [@(_value) description];
-    _numberDisplay.displayLabel.text = _numpadView.displayText;
+    
+    if(_inputStyle == IDPNumpadViewControllerInputStyleNumber ) {
+        _numpadView.text = [@(_value) description];
+        _numberDisplay.displayLabel.text = _numpadView.displayText;
+    }else if(_inputStyle == IDPNumpadViewControllerInputStyleSerialNumber ) {
+        _numpadView.inputStyle = IDPNumpadViewInputStyleSerialNumber;
+        
+        _numpadView.text = [[_serialNumber componentsSeparatedByString:@"-"] componentsJoinedByString:@""];
+        _numberDisplay.displayLabel.text = _numpadView.displayText;
+        [_numpadView hiddenNumberSupportButton:YES];
+    }
+    
     
     if( _hideNumberDisplay ){
         [_numberDisplay removeFromSuperview];
@@ -88,7 +102,12 @@
 {
     _numberDisplay.displayLabel.text = _numpadView.displayText;
 
-    _value = numpadView.value;
+    if( _inputStyle == IDPNumpadViewControllerInputStyleNumber ){
+        _value = numpadView.value;
+    }else{
+        _serialNumber = _numpadView.serialnNumber;
+    }
+    
     if( [_delegate respondsToSelector:@selector(numpadViewControllerDidUpdate:)] ){
         [_delegate numpadViewControllerDidUpdate:self];
     }

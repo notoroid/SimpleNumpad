@@ -37,6 +37,8 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
     IBOutletCollection(UIView) NSArray *_buttonViews;
     
     NSString *_text;
+    
+    NSMutableDictionary *_replacedNumber;
 }
 @end
 
@@ -56,6 +58,50 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
     [self addGestureRecognizer:_longPressGestureRecognizer];
 }
 
+- (void) hiddenNumberSupportButton:(BOOL)hidden
+{
+    _button00View.hidden = hidden;
+    _buttonDotView.hidden= hidden;
+}
+
+- (void) replacedNumber:(NSString *)numberName newNumber:(NSString *)newNumber
+{
+    NSArray *buttons = @[
+     _button0View
+    ,_button00View
+    ,_button1View
+    ,_button2View
+    ,_button3View
+    ,_button4View
+    ,_button5View
+    ,_button6View
+    ,_button7View
+    ,_button8View
+    ,_button9View
+    ,_buttonDotView
+    ];
+    
+    if (_replacedNumber == nil ) {
+        _replacedNumber = [NSMutableDictionary dictionary];
+    }
+    
+    [buttons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        UIView *view = obj;
+        
+        [view.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if( [obj isKindOfClass:[UILabel class]] ){
+                UILabel *label = obj;
+                if( [label.text isEqualToString:numberName] ){
+                    _replacedNumber[numberName] = newNumber;
+                    label.text = newNumber;
+                    *stop  = YES;
+                }
+            }
+        }];
+    }];
+    
+}
+
 - (CGFloat) value
 {
     double value = [_text doubleValue];
@@ -64,34 +110,69 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
 
 - (NSString *)displayText
 {
-    double value = [_text doubleValue];
-
-    static NSNumberFormatter *s_formatter = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        s_formatter = [[NSNumberFormatter alloc] init];
-        [s_formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        [s_formatter setGroupingSeparator:@","];
-        [s_formatter setGroupingSize:3];
-    });
-    
-    NSString *text = [s_formatter stringFromNumber:@(value)];
-
-    
-    if( [_text hasSuffix:@"."] ){
-        text = [text stringByAppendingString:@"."];
-    }else{
-        NSRange rangePeriodOriginal = [_text rangeOfString:@"."];
-        if( rangePeriodOriginal.location != NSNotFound){
-            NSArray *components = [text componentsSeparatedByString:@"."];
-            NSArray *originalComponents = [_text componentsSeparatedByString:@"."];
-            text = components.firstObject;
+    NSString *text = nil;
+    if( _inputStyle == IDPNumpadViewInputStyleNumber ){
+        double value = [_text doubleValue];
+        
+        static NSNumberFormatter *s_formatter = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            s_formatter = [[NSNumberFormatter alloc] init];
+            [s_formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+            [s_formatter setGroupingSeparator:@","];
+            [s_formatter setGroupingSize:3];
+        });
+        
+        text = [s_formatter stringFromNumber:@(value)];
+        
+        
+        if( [_text hasSuffix:@"."] ){
             text = [text stringByAppendingString:@"."];
-            text = [text stringByAppendingString:originalComponents.lastObject];
+        }else{
+            NSRange rangePeriodOriginal = [_text rangeOfString:@"."];
+            if( rangePeriodOriginal.location != NSNotFound){
+                NSArray *components = [text componentsSeparatedByString:@"."];
+                NSArray *originalComponents = [_text componentsSeparatedByString:@"."];
+                text = components.firstObject;
+                text = [text stringByAppendingString:@"."];
+                text = [text stringByAppendingString:originalComponents.lastObject];
+            }
         }
+    }else{
+        unichar characters[3];
+        unichar *iterator = characters;
+        unichar *end = characters + 2;
+        
+        NSMutableArray *components = [NSMutableArray array];
+        
+        for (NSInteger i = 0; i< _text.length ; i++ ) {
+            unichar character = [_text characterAtIndex:i];
+            *iterator = character;
+            iterator++;
+            
+            if( iterator == end ){
+                *iterator = 0;
+                NSString *string = [NSString stringWithCharacters:characters length:2];
+                [components addObject:string];
+                
+                iterator = characters;
+            }
+        }
+        if( iterator != characters ){
+            *iterator = 0;
+            NSString *string = [NSString stringWithCharacters:characters length:iterator-characters];
+            [components addObject:string];
+        }
+        
+        text = [components componentsJoinedByString:@"-"];
     }
     
     return text;
+}
+
+- (NSString *)serialnNumber
+{
+    return self.displayText;
 }
 
 - (void) applyAnimationWithView:(UIView *)view press:(BOOL)press
@@ -287,15 +368,19 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
 - (BOOL) canInsertZeroWithText:(NSString *)text
 {
     BOOL canInsert = NO;
-    
-    double value = [_text doubleValue];
-    if( value != 0.0 ){
-        canInsert = YES;
-    }else{
-        NSRange range = [_text rangeOfString:@"."];
-        if( range.location != NSNotFound ){
+ 
+    if( _inputStyle == IDPNumpadViewInputStyleNumber ){
+        double value = [_text doubleValue];
+        if( value != 0.0 ){
             canInsert = YES;
+        }else{
+            NSRange range = [_text rangeOfString:@"."];
+            if( range.location != NSNotFound ){
+                canInsert = YES;
+            }
         }
+    }else{
+        canInsert = YES;
     }
  
     return canInsert;
@@ -326,7 +411,7 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
                     _text = [_text stringByAppendingString:@"0"];
                     [_delegate numpadViewDidUpdate:self];
                 }
-            }else if(_button00View == view){
+            }else if(_button00View == view && _button00View.hidden != YES){
                 if( [self canInsertZeroWithText:_text]){
                     _text = [_text stringByAppendingString:@"00"];
                     [_delegate numpadViewDidUpdate:self];
@@ -365,7 +450,7 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
                     _text = [_text substringToIndex:_text.length-1];
                     [_delegate numpadViewDidUpdate:self];
                 }
-            }else if(_buttonDotView){
+            }else if(_buttonDotView == view && _buttonDotView.hidden != YES){
                 NSRange range = [_text rangeOfString:@"."];
                 if( range.location == NSNotFound ){
                     _text = [_text stringByAppendingString:@"."];

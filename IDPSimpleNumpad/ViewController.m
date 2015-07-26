@@ -64,8 +64,9 @@
     NSInteger selectedRow = [self.stylePickerView selectedRowInComponent:0];
     IDPNumpadViewControllerStyle style = [self.styles[selectedRow][@"style"] integerValue];
     
-    IDPNumpadViewController *viewController = [IDPNumpadViewController numpadViewControllerWithStyle:style showNumberDisplay:self.showNumpadSwitch.on];
+    IDPNumpadViewController *viewController = [IDPNumpadViewController numpadViewControllerWithStyle:style inputStyle:IDPNumpadViewControllerInputStyleNumber showNumberDisplay:self.showNumpadSwitch.on];
     viewController.value = self.value;
+    
     viewController.delegate = self;
     
     [self presentViewController:viewController animated:YES completion:^{
