@@ -83,6 +83,10 @@
         _numpadView.inputStyle = IDPNumpadViewInputStyleSerialNumber;
         _numpadView.separatorIntervals = self.separatorIntervals;
         _numpadView.text = [[_serialNumber componentsSeparatedByString:@"-"] componentsJoinedByString:@""];
+        if( _numpadView.text == nil ){
+            _numpadView.text = @"";
+        }
+        
         _numberDisplay.displayLabel.text = _numpadView.displayText;
         
         [_numpadView hiddenNumberSupportButton:YES];
