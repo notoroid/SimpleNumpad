@@ -15,7 +15,7 @@ static const NSString * CSSimpleNumpadPressedKey  = @"CSSimpleNumpadPressedKey";
 static const NSString * CSSimpleNumpadLabelViewKey  = @"CSSimpleNumpadLabelViewKey";
 static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimationViewKey";
 
-@interface IDPNumpadView ()
+@interface IDPNumpadView () <UIGestureRecognizerDelegate>
 {
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
     
@@ -56,6 +56,7 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
 {
     _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongPress:)];
     [self addGestureRecognizer:_longPressGestureRecognizer];
+    _longPressGestureRecognizer.delegate = self;
 }
 
 - (void) hiddenNumberSupportButton:(BOOL)hidden
@@ -407,6 +408,20 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
     }
  
     return canInsert;
+}
+
+- (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    BOOL shouldReceive = YES;
+
+    if( gestureRecognizer == _longPressGestureRecognizer ){
+        CGPoint location = [touch locationInView:_buttonBackspaceView.superview];
+        if( CGRectContainsPoint(_buttonBackspaceView.frame, location) != YES ){
+            shouldReceive = NO;
+        }
+    }
+    
+    return shouldReceive;
 }
 
 - (void)onLongPress:(UILongPressGestureRecognizer *)longPressGestureRecognizer
