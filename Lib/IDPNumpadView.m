@@ -82,11 +82,12 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
         text = [text stringByAppendingString:@"."];
     }else{
         NSRange rangePeriodOriginal = [_text rangeOfString:@"."];
-        NSRange rangePeriodDisplay = [text rangeOfString:@"."];
-        if( rangePeriodOriginal.location != NSNotFound && rangePeriodDisplay.location == NSNotFound ){
-            NSArray *components = [_text componentsSeparatedByString:@"."];
+        if( rangePeriodOriginal.location != NSNotFound){
+            NSArray *components = [text componentsSeparatedByString:@"."];
+            NSArray *originalComponents = [_text componentsSeparatedByString:@"."];
+            text = components.firstObject;
             text = [text stringByAppendingString:@"."];
-            text = [text stringByAppendingString:components.lastObject];
+            text = [text stringByAppendingString:originalComponents.lastObject];
         }
     }
     
