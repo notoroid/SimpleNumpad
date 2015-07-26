@@ -57,6 +57,7 @@
 		87AE536E1B4567F800E51108 /* IDPSimpleNumpadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IDPSimpleNumpadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87AE53731B4567F800E51108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87AE53741B4567F800E51108 /* IDPSimpleNumpadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDPSimpleNumpadTests.m; sourceTree = "<group>"; };
+		87BB15F91B657615000B2A48 /* SimpleNumpad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleNumpad.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +81,7 @@
 		8784D96D1B46243700EEAA29 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				87BB15F91B657615000B2A48 /* SimpleNumpad.h */,
 				8784D96E1B46243700EEAA29 /* EasyEaseAnimation.h */,
 				8784D96F1B46243700EEAA29 /* EasyEaseAnimation.m */,
 				8784D9701B46243700EEAA29 /* IDPNumberDisplay.h */,

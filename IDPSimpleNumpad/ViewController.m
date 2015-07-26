@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "IDPNumpadViewController.h"
+#import "SimpleNumpad.h"
 
 @interface ViewController () <IDPNumpadViewControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 
