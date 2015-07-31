@@ -20,6 +20,8 @@
 		87AE53661B4567F800E51108 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87AE53651B4567F800E51108 /* Images.xcassets */; };
 		87AE53691B4567F800E51108 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87AE53671B4567F800E51108 /* LaunchScreen.xib */; };
 		87AE53751B4567F800E51108 /* IDPSimpleNumpadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AE53741B4567F800E51108 /* IDPSimpleNumpadTests.m */; };
+		87D174361B6A519B00E25B12 /* QueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D174351B6A519B00E25B12 /* QueryViewController.m */; };
+		87D174391B6A6B8800E25B12 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D174381B6A6B8800E25B12 /* SearchViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,10 @@
 		87AE53731B4567F800E51108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87AE53741B4567F800E51108 /* IDPSimpleNumpadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDPSimpleNumpadTests.m; sourceTree = "<group>"; };
 		87BB15F91B657615000B2A48 /* SimpleNumpad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleNumpad.h; sourceTree = "<group>"; };
+		87D174341B6A519B00E25B12 /* QueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryViewController.h; sourceTree = "<group>"; };
+		87D174351B6A519B00E25B12 /* QueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryViewController.m; sourceTree = "<group>"; };
+		87D174371B6A6B8800E25B12 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		87D174381B6A6B8800E25B12 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,10 @@
 				87AE535F1B4567F800E51108 /* ViewController.h */,
 				87AE53601B4567F800E51108 /* ViewController.m */,
 				87AE53621B4567F800E51108 /* Main.storyboard */,
+				87D174341B6A519B00E25B12 /* QueryViewController.h */,
+				87D174351B6A519B00E25B12 /* QueryViewController.m */,
+				87D174371B6A6B8800E25B12 /* SearchViewController.h */,
+				87D174381B6A6B8800E25B12 /* SearchViewController.m */,
 				87AE53651B4567F800E51108 /* Images.xcassets */,
 				87AE53671B4567F800E51108 /* LaunchScreen.xib */,
 				87AE53581B4567F800E51108 /* Supporting Files */,
@@ -260,6 +270,8 @@
 			files = (
 				8784D97C1B46243700EEAA29 /* IDPNumpadViewController.m in Sources */,
 				8784D97E1B46243700EEAA29 /* IDPSNStyleKit.m in Sources */,
+				87D174391B6A6B8800E25B12 /* SearchViewController.m in Sources */,
+				87D174361B6A519B00E25B12 /* QueryViewController.m in Sources */,
 				87AE53611B4567F800E51108 /* ViewController.m in Sources */,
 				87AE535E1B4567F800E51108 /* AppDelegate.m in Sources */,
 				8784D97A1B46243700EEAA29 /* IDPNumberDisplay.m in Sources */,

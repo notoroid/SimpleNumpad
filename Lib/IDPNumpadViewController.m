@@ -13,7 +13,9 @@
 {
     __weak IBOutlet IDPNumberDisplay *_numberDisplay;
     __weak IBOutlet IDPNumpadView *_numpadView;
+    UIViewController *_searchViewController;
 }
+- (void) setSearchViewController:(UIViewController *)searchViewController;
 @end
 
 @implementation IDPNumpadViewController
@@ -43,7 +45,6 @@
    
         IDPNumpadViewController *numpadViewController = viewController;
         numpadViewController.inputStyle = inputStyle;
-
     }
     return viewController;
 }
@@ -55,6 +56,28 @@
         numpadViewController.hideNumberDisplay = YES;
     }
     return numpadViewController;
+}
+
++ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style searchViewController:(UIViewController *)searchViewController showNumberDisplay:(BOOL)showNumberDisplay
+{
+    IDPNumpadViewController *numpadViewController = [IDPNumpadViewController numpadViewControllerWithStyle:style inputStyle:IDPNumpadViewControllerInputStyleSerialNumber];
+    if( showNumberDisplay != YES ){
+        numpadViewController.hideNumberDisplay = YES;
+    }
+
+    [numpadViewController setSearchViewController:searchViewController];
+    
+    return numpadViewController;
+}
+
+- (void) setSearchViewController:(UIViewController *)searchViewController;
+{
+    _searchViewController = searchViewController;
+}
+
+- (UIViewController *)searchViewController
+{
+    return _searchViewController;
 }
 
 - (IDPNumberDisplay *)numberDisplay
@@ -89,7 +112,69 @@
         
         _numberDisplay.displayLabel.text = _numpadView.displayText;
         
+        // displayの表示を制御
         [_numpadView hiddenNumberSupportButton:YES];
+        
+        if( _searchViewController ){
+            _searchViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+            [self.view addSubview:_searchViewController.view];
+
+//            id<UILayoutSupport> topLayoutGuide = self.topLayoutGuide;
+            
+            NSArray *layoutConstraint = @[
+//                [NSLayoutConstraint constraintWithItem:_searchViewController.view
+//                                   attribute:NSLayoutAttributeTop
+//                                   relatedBy:NSLayoutRelationEqual
+//                                   toItem:self.topLayoutGuide
+//                                   attribute: NSLayoutAttributeBottom
+//                                   multiplier: 1.0
+//                                   constant:0
+//                 ]
+                  [NSLayoutConstraint constraintWithItem:_searchViewController.view
+                                               attribute:NSLayoutAttributeTop
+                                               relatedBy:NSLayoutRelationEqual
+                                                  toItem:self.view
+                                               attribute:NSLayoutAttributeTop
+                                              multiplier:1.0
+                                                constant:0
+                  ]
+                  
+                ,[NSLayoutConstraint constraintWithItem:_searchViewController.view
+                                   attribute:NSLayoutAttributeWidth
+                                   relatedBy:NSLayoutRelationEqual
+                                   toItem: self.view
+                                   attribute:NSLayoutAttributeWidth
+                                   multiplier:1.0
+                                   constant:0
+                ]
+                  
+                ,[NSLayoutConstraint constraintWithItem:_searchViewController.view
+                                             attribute:NSLayoutAttributeBottom
+                                             relatedBy:NSLayoutRelationEqual
+                                             toItem:_hideNumberDisplay ? _numpadView : _numberDisplay
+                                             attribute: NSLayoutAttributeTop
+                                            multiplier: 1.0
+                                              constant:0
+                ]
+            ];
+            [self.view addConstraints:layoutConstraint];
+        
+            [self addChildViewController:_searchViewController];
+            
+            __block UITapGestureRecognizer *tapGestureRecognizer = nil;
+            [self.view.gestureRecognizers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                UIGestureRecognizer *gestureRecognizer = obj;
+                if( [gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]){
+                    tapGestureRecognizer = (UITapGestureRecognizer *)gestureRecognizer;
+                    *stop = YES;
+                }
+            }];
+            if( tapGestureRecognizer != nil ){
+                [self.view removeGestureRecognizer:tapGestureRecognizer];
+            }
+            
+            [self.view sendSubviewToBack:_searchViewController.view];
+        }
     }
     
     

@@ -35,8 +35,10 @@ typedef NS_ENUM(NSInteger, IDPNumpadViewControllerInputStyle )
 
 @interface IDPNumpadViewController : UIViewController<IDPNumpadViewDelegate>
 
-+ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle ;
-+ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle  showNumberDisplay:(BOOL)showNumberDisplay;
++ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle;
++ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle showNumberDisplay:(BOOL)showNumberDisplay;
++ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style searchViewController:(UIViewController *)searchViewController showNumberDisplay:(BOOL)showNumberDisplay;
+
 
 @property(readonly,nonatomic) IDPNumberDisplay *numberDisplay;
 @property(readonly,nonatomic) IDPNumpadView *numpadView;
@@ -48,6 +50,7 @@ typedef NS_ENUM(NSInteger, IDPNumpadViewControllerInputStyle )
 @property (weak,nonatomic) id<IDPNumpadViewControllerDelegate> delegate;
 @property (assign,nonatomic) BOOL hideNumberDisplay;
 @property (strong,nonatomic) NSArray *separatorIntervals;
+@property (readonly,nonatomic) UIViewController *searchViewController;
 @end
 
 @protocol IDPNumpadViewControllerDelegate <NSObject>
