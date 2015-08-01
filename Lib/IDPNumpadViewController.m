@@ -14,6 +14,10 @@
     __weak IBOutlet IDPNumberDisplay *_numberDisplay;
     __weak IBOutlet IDPNumpadView *_numpadView;
     UIViewController *_searchViewController;
+    
+    __weak /*IBOutlet*/ NSLayoutConstraint *_searchControlTopConstraint;
+    __weak IBOutlet NSLayoutConstraint *_numpadBottomConstraint;
+    CGFloat _statupPresentingViewControllerViewFrameMinY;
 }
 - (void) setSearchViewController:(UIViewController *)searchViewController;
 @end
@@ -119,9 +123,16 @@
             _searchViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
             [self.view addSubview:_searchViewController.view];
 
-//            id<UILayoutSupport> topLayoutGuide = self.topLayoutGuide;
+            _statupPresentingViewControllerViewFrameMinY = CGRectGetMinY(self.presentingViewController.view.frame);
             
-            NSArray *layoutConstraint = @[
+            NSLayoutConstraint *searchControlTopConstraint = [NSLayoutConstraint constraintWithItem:_searchViewController.view
+                                                                                          attribute:NSLayoutAttributeTop
+                                                                                          relatedBy:NSLayoutRelationEqual
+                                                                                             toItem:self.view
+                                                                                          attribute:NSLayoutAttributeTop
+                                                                                         multiplier:1.0
+                                                                                           constant:0
+            ];
 //                [NSLayoutConstraint constraintWithItem:_searchViewController.view
 //                                   attribute:NSLayoutAttributeTop
 //                                   relatedBy:NSLayoutRelationEqual
@@ -130,15 +141,11 @@
 //                                   multiplier: 1.0
 //                                   constant:0
 //                 ]
-                  [NSLayoutConstraint constraintWithItem:_searchViewController.view
-                                               attribute:NSLayoutAttributeTop
-                                               relatedBy:NSLayoutRelationEqual
-                                                  toItem:self.view
-                                               attribute:NSLayoutAttributeTop
-                                              multiplier:1.0
-                                                constant:0
-                  ]
-                  
+            
+            _searchControlTopConstraint = searchControlTopConstraint;
+            
+            NSArray *layoutConstraint = @[
+                  searchControlTopConstraint
                 ,[NSLayoutConstraint constraintWithItem:_searchViewController.view
                                    attribute:NSLayoutAttributeWidth
                                    relatedBy:NSLayoutRelationEqual
@@ -177,10 +184,53 @@
         }
     }
     
-    
     if( _hideNumberDisplay ){
         [_numberDisplay removeFromSuperview];
     }
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // presentingViewControllerを監視
+    [self.presentingViewController.view addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:NULL];
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    [self.view setNeedsUpdateConstraints];
+
+    UIView *presentingViewControllerView = object;
+    if( CGRectGetHeight(self.view.frame) ==  CGRectGetHeight(presentingViewControllerView.frame) ){
+        _searchControlTopConstraint.constant = 0;
+        _numpadBottomConstraint.constant = 0;
+    }else{
+//        NSLog(@"CGRectGetMinY(presentingViewControllerView.frame)=%@",@(CGRectGetMinY(presentingViewControllerView.frame)) );
+        
+        if (_statupPresentingViewControllerViewFrameMinY == 0.0 ) {
+            _searchControlTopConstraint.constant = CGRectGetMinY(presentingViewControllerView.frame);
+
+            CGFloat delta = CGRectGetHeight(self.view.frame) - CGRectGetHeight(presentingViewControllerView.frame) - CGRectGetMinY(presentingViewControllerView.frame);
+            _numpadBottomConstraint.constant = delta;
+        }else{
+            _searchControlTopConstraint.constant = - _statupPresentingViewControllerViewFrameMinY;
+        }
+    }
+    
+    CGFloat statusBarOrientationAnimationDuration = [UIApplication sharedApplication].statusBarOrientationAnimationDuration;
+    [UIView animateWithDuration:statusBarOrientationAnimationDuration
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     }];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    UIView *presentingViewControllerView = self.presentingViewController.view;
+    [presentingViewControllerView removeObserver:self forKeyPath:@"frame" context:NULL];
 }
 
 - (void)didReceiveMemoryWarning {

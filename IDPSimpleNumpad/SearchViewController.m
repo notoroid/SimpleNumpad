@@ -55,11 +55,6 @@
     [self.tableView reloadData];
 }
 
-- (void) applyTopLayoutGuideLength:(CGFloat)length
-{
-    UIEdgeInsets contentInset = self.tableView.contentInset;
-    self.tableView.contentInset = UIEdgeInsetsMake(length, contentInset.left, contentInset.bottom, contentInset.right);
-}
 
 - (CGFloat) topLayoutGuideLength
 {
@@ -68,10 +63,10 @@
 
 - (void) setTopLayoutGuideLength:(CGFloat)topLayoutGuideLength
 {
+    _topLayoutGuideLength = topLayoutGuideLength;
     UIEdgeInsets contentInset = self.tableView.contentInset;
     self.tableView.contentInset = UIEdgeInsetsMake(topLayoutGuideLength, contentInset.left, contentInset.bottom, contentInset.right);
 }
-
 
 - (BOOL) prefersStatusBarHidden
 {

@@ -34,6 +34,8 @@
     IDPNumpadViewController *viewController = [IDPNumpadViewController numpadViewControllerWithStyle:IDPNumpadViewControllerStyleDefault searchViewController:searchViewController showNumberDisplay:YES];
     viewController.delegate = self;
     
+//    NSLog(@"self.topLayoutGuide.length=%@",@(self.topLayoutGuide.length));
+    
     _searchViewController = searchViewController;
     _searchViewController.topLayoutGuideLength = self.topLayoutGuide.length;
     _searchViewController.delegate = self;
