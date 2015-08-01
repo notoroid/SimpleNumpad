@@ -31,13 +31,15 @@
 {
     SearchViewController *searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"searchViewController"];
     
-    IDPNumpadViewController *viewController = [IDPNumpadViewController numpadViewControllerWithStyle:IDPNumpadViewControllerStyleDefault searchViewController:searchViewController showNumberDisplay:YES];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+    navigationController.navigationBarHidden = YES;
+    
+    IDPNumpadViewController *viewController = [IDPNumpadViewController numpadViewControllerWithStyle:IDPNumpadViewControllerStyleDefault searchViewController:navigationController/*searchViewController*/ showNumberDisplay:YES];
     viewController.delegate = self;
     
 //    NSLog(@"self.topLayoutGuide.length=%@",@(self.topLayoutGuide.length));
     
     _searchViewController = searchViewController;
-    _searchViewController.topLayoutGuideLength = self.topLayoutGuide.length;
     _searchViewController.delegate = self;
 
     

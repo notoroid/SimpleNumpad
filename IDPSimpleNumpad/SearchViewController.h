@@ -14,7 +14,6 @@
 
 - (void) findWithString:(NSString *)string;
 @property (weak,nonatomic) id<SearchViewControllerDelegate> delegate;
-@property (assign,nonatomic) CGFloat topLayoutGuideLength;
 @property (strong,nonatomic) NSDictionary *selectedObject;
 
 @end

@@ -12,7 +12,6 @@
 {
     NSArray *_data;
     NSArray *_results;
-    CGFloat _topLayoutGuideLength;
 }
 @end
 
@@ -53,19 +52,6 @@
     _results = [_data filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"serial contains[cd] %@",string]];
     
     [self.tableView reloadData];
-}
-
-
-- (CGFloat) topLayoutGuideLength
-{
-    return _topLayoutGuideLength;
-}
-
-- (void) setTopLayoutGuideLength:(CGFloat)topLayoutGuideLength
-{
-    _topLayoutGuideLength = topLayoutGuideLength;
-    UIEdgeInsets contentInset = self.tableView.contentInset;
-    self.tableView.contentInset = UIEdgeInsetsMake(topLayoutGuideLength, contentInset.left, contentInset.bottom, contentInset.right);
 }
 
 - (BOOL) prefersStatusBarHidden
