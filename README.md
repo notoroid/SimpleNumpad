@@ -17,13 +17,13 @@ Cocoapods Supported. Please describe the following in your Podfile.
 pod 'SimpleNumpad', :git => 'https://github.com/notoroid/SimpleNumpad.git'
 
 ```
-cocoapod install
+pod install
 ```
 
 or 
 
 ```
-cocoapod update
+pod update
 ```
 
 ```
