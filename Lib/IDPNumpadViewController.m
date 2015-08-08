@@ -18,11 +18,31 @@
     __weak /*IBOutlet*/ NSLayoutConstraint *_searchControlTopConstraint;
     __weak IBOutlet NSLayoutConstraint *_numpadBottomConstraint;
     CGFloat _statupPresentingViewControllerViewFrameMinY;
+    
+    NSString *_serialNumber;
+    
 }
 - (void) setSearchViewController:(UIViewController *)searchViewController;
 @end
 
 @implementation IDPNumpadViewController
+
+- (NSString *)serialNumber
+{
+    return _serialNumber;
+}
+
+- (void) setSerialNumber:(NSString *)serialNumber
+{
+    _serialNumber = serialNumber;
+        // シリアル番号を格納
+    
+    if( _numpadView.inputStyle == IDPNumpadViewInputStyleSerialNumber ){
+        NSArray *components = [serialNumber componentsSeparatedByString:@"-"];
+        _numpadView.text = [components componentsJoinedByString:@""];
+        _numberDisplay.displayLabel.text = _numpadView.displayText;
+    }
+}
 
 + (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle
 {
