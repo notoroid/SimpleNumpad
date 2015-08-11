@@ -86,10 +86,10 @@
 
 + (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style searchViewController:(UIViewController *)searchViewController showNumberDisplay:(BOOL)showNumberDisplay
 {
-    return [IDPNumpadViewController numpadViewControllerWithStyle:style searchViewController:searchViewController unitDisplayController:nil showNumberDisplay:showNumberDisplay];
+    return [IDPNumpadViewController numpadViewControllerWithStyle:style searchViewController:searchViewController unitDisplayController:nil inputStyle:IDPNumpadViewControllerInputStyleSerialNumber showNumberDisplay:showNumberDisplay];
 }
 
-+ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style searchViewController:(UIViewController *)searchViewController unitDisplayController:(UIViewController<IDPNumpadViewControllerUnitViewControllerProtocol> *) unitDisplayController showNumberDisplay:(BOOL)showNumberDisplay
++ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style searchViewController:(UIViewController *)searchViewController unitDisplayController:(UIViewController<IDPNumpadViewControllerUnitViewControllerProtocol> *) unitDisplayController inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle showNumberDisplay:(BOOL)showNumberDisplay
 {
     IDPNumpadViewController *numpadViewController = [IDPNumpadViewController numpadViewControllerWithStyle:style inputStyle:IDPNumpadViewControllerInputStyleSerialNumber];
     if( showNumberDisplay != YES ){
