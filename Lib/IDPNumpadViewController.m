@@ -211,36 +211,36 @@
             
             [self.view sendSubviewToBack:_searchViewController.view];
         }
-        
-        if( _unitDisplayController ){
-            CGFloat numberDisplayLabelTrailingConstraint = _numberDisplayLabelTrailingConstraint.constant;
-            UIEdgeInsets insetsUnitDisplay = UIEdgeInsetsMake(0, numberDisplayLabelTrailingConstraint ,0,numberDisplayLabelTrailingConstraint );
-            if( [_unitDisplayController respondsToSelector:@selector(unitViewController: contentInsets:)] ){
-                insetsUnitDisplay = [_unitDisplayController unitViewController:self contentInsets:insetsUnitDisplay];
-            }
-            
-            CGFloat unitDisplayWidth = 80.0;
-            if( [_unitDisplayController respondsToSelector:@selector(unitViewControllerWidth:)] ){
-                unitDisplayWidth = [_unitDisplayController unitViewControllerWidth:self];
-            }
-            _numberDisplayLabelTrailingConstraint.constant = insetsUnitDisplay.left + unitDisplayWidth + insetsUnitDisplay.right;
-            
-            _unitDisplayController.view.translatesAutoresizingMaskIntoConstraints = NO;
-            [self.view addSubview:_unitDisplayController.view];
-
-            NSArray *constraints = @[
-                  [NSLayoutConstraint constraintWithItem:_unitDisplayController.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_numberDisplay.displayLabel attribute:NSLayoutAttributeRight multiplier:1 constant:insetsUnitDisplay.left]
-                 ,[NSLayoutConstraint constraintWithItem:_unitDisplayController.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_numberDisplay attribute:NSLayoutAttributeRight multiplier:1 constant:-insetsUnitDisplay.right]
-                 ,[NSLayoutConstraint constraintWithItem:_unitDisplayController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_numberDisplay attribute:NSLayoutAttributeTop multiplier:1 constant:0.0]
-                ,[NSLayoutConstraint constraintWithItem:_unitDisplayController.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:_numberDisplay attribute:NSLayoutAttributeHeight multiplier:1 constant:0.0]
-            ];
-            [self.view addConstraints:constraints];
-            
-            [self addChildViewController:_unitDisplayController];
-            
+    }
+    
+    if( _unitDisplayController ){
+        CGFloat numberDisplayLabelTrailingConstraint = _numberDisplayLabelTrailingConstraint.constant;
+        UIEdgeInsets insetsUnitDisplay = UIEdgeInsetsMake(0, numberDisplayLabelTrailingConstraint ,0,numberDisplayLabelTrailingConstraint );
+        if( [_unitDisplayController respondsToSelector:@selector(unitViewController: contentInsets:)] ){
+            insetsUnitDisplay = [_unitDisplayController unitViewController:self contentInsets:insetsUnitDisplay];
         }
         
+        CGFloat unitDisplayWidth = 80.0;
+        if( [_unitDisplayController respondsToSelector:@selector(unitViewControllerWidth:)] ){
+            unitDisplayWidth = [_unitDisplayController unitViewControllerWidth:self];
+        }
+        _numberDisplayLabelTrailingConstraint.constant = insetsUnitDisplay.left + unitDisplayWidth + insetsUnitDisplay.right;
+        
+        _unitDisplayController.view.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view addSubview:_unitDisplayController.view];
+        
+        NSArray *constraints = @[
+                                 [NSLayoutConstraint constraintWithItem:_unitDisplayController.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_numberDisplay.displayLabel attribute:NSLayoutAttributeRight multiplier:1 constant:insetsUnitDisplay.left]
+                                 ,[NSLayoutConstraint constraintWithItem:_unitDisplayController.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_numberDisplay attribute:NSLayoutAttributeRight multiplier:1 constant:-insetsUnitDisplay.right]
+                                 ,[NSLayoutConstraint constraintWithItem:_unitDisplayController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_numberDisplay attribute:NSLayoutAttributeTop multiplier:1 constant:0.0]
+                                 ,[NSLayoutConstraint constraintWithItem:_unitDisplayController.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:_numberDisplay attribute:NSLayoutAttributeHeight multiplier:1 constant:0.0]
+                                 ];
+        [self.view addConstraints:constraints];
+        
+        [self addChildViewController:_unitDisplayController];
+        
     }
+
     
     if( _hideNumberDisplay ){
         [_numberDisplay removeFromSuperview];
