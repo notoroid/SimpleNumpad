@@ -111,7 +111,7 @@
     _searchViewController = searchViewController;
 }
 
-- (void) setUnitDisplayCOntroller:(UIViewController *)unitDisplayController;
+- (void) setUnitDisplayCOntroller:(UIViewController<IDPNumpadViewControllerUnitViewControllerProtocol> *)unitDisplayController;
 {
     _unitDisplayController = unitDisplayController;
 }
