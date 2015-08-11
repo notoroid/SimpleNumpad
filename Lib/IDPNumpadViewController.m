@@ -17,6 +17,7 @@
     
     __weak /*IBOutlet*/ NSLayoutConstraint *_searchControlTopConstraint;
     __weak IBOutlet NSLayoutConstraint *_numpadBottomConstraint;
+    __weak IBOutlet NSLayoutConstraint *_numberDisplayLabelTrailingConstraint;
     CGFloat _statupPresentingViewControllerViewFrameMinY;
     
     NSString *_serialNumber;
