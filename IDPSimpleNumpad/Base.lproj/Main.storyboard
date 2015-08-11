@@ -163,7 +163,39 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z7n-PJ-ipn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1080" y="1706"/>
+            <point key="canvasLocation" x="1027" y="1648"/>
+        </scene>
+        <!--Unit Display Controller-->
+        <scene sceneID="fGX-be-hq5">
+            <objects>
+                <viewController storyboardIdentifier="unitDisplayController" id="Wqm-o5-j7S" customClass="UnitDisplayController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fz0-ey-Ezl"/>
+                        <viewControllerLayoutGuide type="bottom" id="d0V-Xq-aoK"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="EAd-hI-TJ0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3R-IU-GDk">
+                                <rect key="frame" x="268" y="278" width="65" height="67"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="58"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="P3R-IU-GDk" secondAttribute="centerY" constant="-10" id="73O-kZ-1Zj"/>
+                            <constraint firstAttribute="centerX" secondItem="P3R-IU-GDk" secondAttribute="centerX" id="iGE-F2-ca3"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KdD-lL-iSu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1027" y="2334"/>
         </scene>
     </scenes>
 </document>

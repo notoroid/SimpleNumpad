@@ -14,6 +14,7 @@
     __weak IBOutlet IDPNumberDisplay *_numberDisplay;
     __weak IBOutlet IDPNumpadView *_numpadView;
     UIViewController *_searchViewController;
+    UIViewController<IDPNumpadViewControllerUnitViewControllerProtocol> *_unitDisplayController;
     
     __weak /*IBOutlet*/ NSLayoutConstraint *_searchControlTopConstraint;
     __weak IBOutlet NSLayoutConstraint *_numpadBottomConstraint;
@@ -85,19 +86,34 @@
 
 + (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style searchViewController:(UIViewController *)searchViewController showNumberDisplay:(BOOL)showNumberDisplay
 {
+    return [IDPNumpadViewController numpadViewControllerWithStyle:style searchViewController:searchViewController unitDisplayController:nil showNumberDisplay:showNumberDisplay];
+}
+
++ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style searchViewController:(UIViewController *)searchViewController unitDisplayController:(UIViewController<IDPNumpadViewControllerUnitViewControllerProtocol> *) unitDisplayController showNumberDisplay:(BOOL)showNumberDisplay
+{
     IDPNumpadViewController *numpadViewController = [IDPNumpadViewController numpadViewControllerWithStyle:style inputStyle:IDPNumpadViewControllerInputStyleSerialNumber];
     if( showNumberDisplay != YES ){
         numpadViewController.hideNumberDisplay = YES;
     }
-
+    
     [numpadViewController setSearchViewController:searchViewController];
+        // 検索用ViewController を登録
+    
+    [numpadViewController setUnitDisplayCOntroller:unitDisplayController];
+        // 単位表示用Controller を追加
     
     return numpadViewController;
 }
 
+
 - (void) setSearchViewController:(UIViewController *)searchViewController;
 {
     _searchViewController = searchViewController;
+}
+
+- (void) setUnitDisplayCOntroller:(UIViewController *)unitDisplayController;
+{
+    _unitDisplayController = unitDisplayController;
 }
 
 - (UIViewController *)searchViewController
@@ -154,14 +170,6 @@
                                                                                          multiplier:1.0
                                                                                            constant:0
             ];
-//                [NSLayoutConstraint constraintWithItem:_searchViewController.view
-//                                   attribute:NSLayoutAttributeTop
-//                                   relatedBy:NSLayoutRelationEqual
-//                                   toItem:self.topLayoutGuide
-//                                   attribute: NSLayoutAttributeBottom
-//                                   multiplier: 1.0
-//                                   constant:0
-//                 ]
             
             _searchControlTopConstraint = searchControlTopConstraint;
             
@@ -203,6 +211,35 @@
             
             [self.view sendSubviewToBack:_searchViewController.view];
         }
+        
+        if( _unitDisplayController ){
+            CGFloat numberDisplayLabelTrailingConstraint = _numberDisplayLabelTrailingConstraint.constant;
+            UIEdgeInsets insetsUnitDisplay = UIEdgeInsetsMake(0, numberDisplayLabelTrailingConstraint ,0,numberDisplayLabelTrailingConstraint );
+            if( [_unitDisplayController respondsToSelector:@selector(unitViewController: contentInsets:)] ){
+                insetsUnitDisplay = [_unitDisplayController unitViewController:self contentInsets:insetsUnitDisplay];
+            }
+            
+            CGFloat unitDisplayWidth = 80.0;
+            if( [_unitDisplayController respondsToSelector:@selector(unitViewControllerWidth:)] ){
+                unitDisplayWidth = [_unitDisplayController unitViewControllerWidth:self];
+            }
+            _numberDisplayLabelTrailingConstraint.constant = insetsUnitDisplay.left + unitDisplayWidth + insetsUnitDisplay.right;
+            
+            _unitDisplayController.view.translatesAutoresizingMaskIntoConstraints = NO;
+            [self.view addSubview:_unitDisplayController.view];
+
+            NSArray *constraints = @[
+                  [NSLayoutConstraint constraintWithItem:_unitDisplayController.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_numberDisplay.displayLabel attribute:NSLayoutAttributeRight multiplier:1 constant:insetsUnitDisplay.left]
+                 ,[NSLayoutConstraint constraintWithItem:_unitDisplayController.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_numberDisplay attribute:NSLayoutAttributeRight multiplier:1 constant:-insetsUnitDisplay.right]
+                 ,[NSLayoutConstraint constraintWithItem:_unitDisplayController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_numberDisplay attribute:NSLayoutAttributeTop multiplier:1 constant:0.0]
+                ,[NSLayoutConstraint constraintWithItem:_unitDisplayController.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:_numberDisplay attribute:NSLayoutAttributeHeight multiplier:1 constant:0.0]
+            ];
+            [self.view addConstraints:constraints];
+            
+            [self addChildViewController:_unitDisplayController];
+            
+        }
+        
     }
     
     if( _hideNumberDisplay ){

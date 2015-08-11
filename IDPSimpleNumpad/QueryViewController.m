@@ -9,6 +9,7 @@
 #import "QueryViewController.h"
 #import "SimpleNumpad.h"
 #import "SearchViewController.h"
+#import "UnitDisplayController.h"
 
 @interface QueryViewController () <IDPNumpadViewControllerDelegate,SearchViewControllerDelegate>
 {
@@ -30,11 +31,12 @@
 - (IBAction)onQuery:(id)sender
 {
     SearchViewController *searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"searchViewController"];
+    UnitDisplayController *unitDisplayController = [self.storyboard instantiateViewControllerWithIdentifier:@"unitDisplayController"];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
     navigationController.navigationBarHidden = YES;
     
-    IDPNumpadViewController *viewController = [IDPNumpadViewController numpadViewControllerWithStyle:IDPNumpadViewControllerStyleDefault searchViewController:navigationController/*searchViewController*/ showNumberDisplay:YES];
+    IDPNumpadViewController *viewController = [IDPNumpadViewController numpadViewControllerWithStyle:IDPNumpadViewControllerStyleDefault searchViewController:navigationController/*searchViewController*/ unitDisplayController:unitDisplayController showNumberDisplay:YES];
     viewController.delegate = self;
     
 //    NSLog(@"self.topLayoutGuide.length=%@",@(self.topLayoutGuide.length));

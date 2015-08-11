@@ -32,13 +32,14 @@ typedef NS_ENUM(NSInteger, IDPNumpadViewControllerInputStyle )
 };
 
 @protocol IDPNumpadViewControllerDelegate;
+@protocol IDPNumpadViewControllerUnitViewControllerProtocol;
 
 @interface IDPNumpadViewController : UIViewController<IDPNumpadViewDelegate>
 
 + (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle;
 + (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle showNumberDisplay:(BOOL)showNumberDisplay;
 + (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style searchViewController:(UIViewController *)searchViewController showNumberDisplay:(BOOL)showNumberDisplay;
-
++ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style searchViewController:(UIViewController *)searchViewController unitDisplayController:(UIViewController<IDPNumpadViewControllerUnitViewControllerProtocol> *) unitDisplayController showNumberDisplay:(BOOL)showNumberDisplay;
 
 @property(readonly,nonatomic) IDPNumberDisplay *numberDisplay;
 @property(readonly,nonatomic) IDPNumpadView *numpadView;
@@ -51,6 +52,7 @@ typedef NS_ENUM(NSInteger, IDPNumpadViewControllerInputStyle )
 @property (assign,nonatomic) BOOL hideNumberDisplay;
 @property (strong,nonatomic) NSArray *separatorIntervals;
 @property (readonly,nonatomic) UIViewController *searchViewController;
+@property (readonly,nonatomic) UIViewController *unitDisplayViewController;
 @end
 
 @protocol IDPNumpadViewControllerDelegate <NSObject>
@@ -61,3 +63,12 @@ typedef NS_ENUM(NSInteger, IDPNumpadViewControllerInputStyle )
 - (void) numpadViewControllerDidCancel:(IDPNumpadViewController *)numpadViewController;
 
 @end
+
+
+@protocol IDPNumpadViewControllerUnitViewControllerProtocol <NSObject>
+@optional
+- (CGFloat) unitViewControllerWidth:(IDPNumpadViewController *)numpadViewController;
+- (UIEdgeInsets) unitViewController:(IDPNumpadViewController *)numpadViewController contentInsets:(UIEdgeInsets)contentInsets;
+
+@end
+

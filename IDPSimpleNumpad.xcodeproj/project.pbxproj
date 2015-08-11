@@ -22,6 +22,7 @@
 		87AE53751B4567F800E51108 /* IDPSimpleNumpadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AE53741B4567F800E51108 /* IDPSimpleNumpadTests.m */; };
 		87D174361B6A519B00E25B12 /* QueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D174351B6A519B00E25B12 /* QueryViewController.m */; };
 		87D174391B6A6B8800E25B12 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D174381B6A6B8800E25B12 /* SearchViewController.m */; };
+		87F1C5E01B799DF9009A5C8C /* UnitDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F1C5DF1B799DF9009A5C8C /* UnitDisplayController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		87D174351B6A519B00E25B12 /* QueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryViewController.m; sourceTree = "<group>"; };
 		87D174371B6A6B8800E25B12 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		87D174381B6A6B8800E25B12 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		87F1C5DE1B799DF9009A5C8C /* UnitDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitDisplayController.h; sourceTree = "<group>"; };
+		87F1C5DF1B799DF9009A5C8C /* UnitDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitDisplayController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +137,8 @@
 				87D174351B6A519B00E25B12 /* QueryViewController.m */,
 				87D174371B6A6B8800E25B12 /* SearchViewController.h */,
 				87D174381B6A6B8800E25B12 /* SearchViewController.m */,
+				87F1C5DE1B799DF9009A5C8C /* UnitDisplayController.h */,
+				87F1C5DF1B799DF9009A5C8C /* UnitDisplayController.m */,
 				87AE53651B4567F800E51108 /* Images.xcassets */,
 				87AE53671B4567F800E51108 /* LaunchScreen.xib */,
 				87AE53581B4567F800E51108 /* Supporting Files */,
@@ -274,6 +279,7 @@
 				87D174361B6A519B00E25B12 /* QueryViewController.m in Sources */,
 				87AE53611B4567F800E51108 /* ViewController.m in Sources */,
 				87AE535E1B4567F800E51108 /* AppDelegate.m in Sources */,
+				87F1C5E01B799DF9009A5C8C /* UnitDisplayController.m in Sources */,
 				8784D97A1B46243700EEAA29 /* IDPNumberDisplay.m in Sources */,
 				8784D97B1B46243700EEAA29 /* IDPNumpadView.m in Sources */,
 				8784D9791B46243700EEAA29 /* EasyEaseAnimation.m in Sources */,
