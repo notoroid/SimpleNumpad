@@ -14,6 +14,7 @@
 @interface QueryViewController () <IDPNumpadViewControllerDelegate,SearchViewControllerDelegate>
 {
     __weak SearchViewController *_searchViewController;
+    __weak IBOutlet UISwitch *_switchDisplayUnit;
 }
 @end
 
@@ -31,7 +32,9 @@
 - (IBAction)onQuery:(id)sender
 {
     SearchViewController *searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"searchViewController"];
-    UnitDisplayController *unitDisplayController = [self.storyboard instantiateViewControllerWithIdentifier:@"unitDisplayController"];
+    
+    
+    UnitDisplayController *unitDisplayController = _switchDisplayUnit.on ? [self.storyboard instantiateViewControllerWithIdentifier:@"unitDisplayController"] : nil;
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
     navigationController.navigationBarHidden = YES;
@@ -57,7 +60,9 @@
 
 - (void) numpadViewControllerDidEnter:(IDPNumpadViewController *)numpadViewController
 {
-    
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void)searchViewControllerDidSelected:(SearchViewController *)searchViewController

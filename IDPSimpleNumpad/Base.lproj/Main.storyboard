@@ -115,15 +115,31 @@
                                     <action selector="onShowNumpad:" destination="8bN-WE-kqI" eventType="touchUpInside" id="iNi-Bt-VY7"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nCF-YQ-m8Z">
+                                <rect key="frame" x="361" y="338" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display unit" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tl8-1a-6Oq">
+                                <rect key="frame" x="265" y="344" width="90" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="tl8-1a-6Oq" secondAttribute="centerY" constant="-54.5" id="38C-mg-xPO"/>
                             <constraint firstAttribute="centerX" secondItem="OJT-CT-LON" secondAttribute="centerX" id="AGp-bG-QFk"/>
+                            <constraint firstAttribute="centerX" secondItem="tl8-1a-6Oq" secondAttribute="centerX" constant="-10" id="C93-We-Fab"/>
+                            <constraint firstAttribute="centerX" secondItem="nCF-YQ-m8Z" secondAttribute="centerX" constant="-85.5" id="Qdj-bM-lzD"/>
+                            <constraint firstAttribute="centerY" secondItem="nCF-YQ-m8Z" secondAttribute="centerY" constant="-53.5" id="XMh-QG-fUW"/>
                             <constraint firstAttribute="centerY" secondItem="OJT-CT-LON" secondAttribute="centerY" id="z4t-0c-wFp"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Query" id="Lm9-x9-D9S"/>
                     <navigationItem key="navigationItem" id="C6C-0v-7zR"/>
+                    <connections>
+                        <outlet property="_switchDisplayUnit" destination="nCF-YQ-m8Z" id="ajo-bp-WGv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ld-Be-aUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -177,9 +193,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3R-IU-GDk">
-                                <rect key="frame" x="268" y="278" width="65" height="67"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="58"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3R-IU-GDk">
+                                <rect key="frame" x="271" y="280" width="59" height="61"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="53"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
