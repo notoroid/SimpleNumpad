@@ -39,7 +39,8 @@
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
     navigationController.navigationBarHidden = YES;
     
-    IDPNumpadViewController *viewController = [IDPNumpadViewController numpadViewControllerWithStyle:IDPNumpadViewControllerStyleDefault searchViewController:navigationController/*searchViewController*/ unitDisplayController:unitDisplayController showNumberDisplay:YES];
+    IDPNumpadViewController *viewController = [IDPNumpadViewController numpadViewControllerWithStyle:IDPNumpadViewControllerStyleDefault searchViewController:navigationController unitDisplayController:unitDisplayController inputStyle:IDPNumpadViewControllerInputStyleSerialNumber showNumberDisplay:YES];
+    
     viewController.delegate = self;
     
 //    NSLog(@"self.topLayoutGuide.length=%@",@(self.topLayoutGuide.length));
