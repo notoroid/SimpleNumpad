@@ -38,7 +38,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xo5-gP-Gvk">
-                                <rect key="frame" x="250" y="285" width="100" height="30"/>
+                                <rect key="frame" x="250" y="245" width="100" height="30"/>
                                 <state key="normal" title="Show Numpad">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -72,7 +72,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Xo5-gP-Gvk" secondAttribute="centerX" id="7Rm-Js-gtv"/>
-                            <constraint firstAttribute="centerY" secondItem="Xo5-gP-Gvk" secondAttribute="centerY" id="Gwa-Ka-k2o"/>
+                            <constraint firstAttribute="centerY" secondItem="Xo5-gP-Gvk" secondAttribute="centerY" constant="40" id="Gwa-Ka-k2o"/>
                             <constraint firstAttribute="trailing" secondItem="UgN-w6-B7i" secondAttribute="trailing" id="Sfq-Nx-F24"/>
                             <constraint firstAttribute="centerY" secondItem="bc3-gj-NwB" secondAttribute="centerY" constant="-53.5" id="Uwi-Vk-6Rw"/>
                             <constraint firstItem="UgN-w6-B7i" firstAttribute="leading" secondItem="Lbp-eP-qqe" secondAttribute="leading" id="X5x-bF-IDR"/>

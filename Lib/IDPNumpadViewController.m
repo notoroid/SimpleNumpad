@@ -362,9 +362,45 @@ static NSDateFormatter *s_numpadViewControllerHourAndMinutesDateFormatter = nil;
     }
 }
 
+- (void) viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+
+    CGSize size = self.view.frame.size;
+    
+    
+    if( [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone ){
+        if( size.width < size.height ){
+            _numberDisplayTrailing.constant = 0;
+            _numberDisplayLeading.constant = 0;
+            _numPadTrailing.constant = 0;
+            _numPadLeading.constant = 0;
+            [self.view setNeedsLayout];
+        }else{
+            CGFloat delta = size.width - size.height;
+            
+            _numberDisplayTrailing.constant = delta * 0.55;
+            _numberDisplayLeading.constant = delta * 0.55;
+            _numPadTrailing.constant = delta * 0.55;
+            _numPadLeading.constant = delta * 0.55;
+            [self.view setNeedsLayout];
+        }
+    }else{
+        CGFloat delta = size.width - 375.0; // iPad は600固定
+        
+        _numberDisplayTrailing.constant = delta * 0.5;
+        _numberDisplayLeading.constant = delta * 0.5;
+        _numPadTrailing.constant = delta * 0.5;
+        _numPadLeading.constant = delta * 0.5;
+        [self.view setNeedsLayout];
+    }
+    
+}
+
+
 - (UIModalPresentationStyle)modalPresentationStyle
 {
-    return UIModalPresentationOverCurrentContext;
+    return UIModalPresentationOverFullScreen;
 }
 
 - (BOOL) gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
