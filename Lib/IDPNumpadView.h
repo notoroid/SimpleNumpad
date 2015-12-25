@@ -22,9 +22,12 @@ typedef NS_ENUM(NSInteger, IDPNumpadViewInputStyle)
 @property (readonly,nonatomic) NSString *displayText;
 @property (readonly,nonatomic) CGFloat value;
 @property (readonly,nonatomic) NSString *serialnNumber;
+
+@property (readonly,nonatomic) NSString *date;
 @property (weak,nonatomic) IBOutlet id<IDPNumpadViewDelegate>delegate;
 @property (assign,nonatomic) IDPNumpadViewInputStyle inputStyle;
 @property (strong,nonatomic) NSArray *separatorIntervals;
+@property (strong,nonatomic) NSString *separatorUnit;
 
 - (void) hiddenNumberSupportButton:(BOOL)hidden;
 

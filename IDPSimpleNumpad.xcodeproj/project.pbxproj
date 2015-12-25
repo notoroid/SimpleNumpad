@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		875C40FD1C2D8CCC00F59018 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875C40FC1C2D8CCC00F59018 /* DateViewController.m */; };
 		8784D9791B46243700EEAA29 /* EasyEaseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8784D96F1B46243700EEAA29 /* EasyEaseAnimation.m */; };
 		8784D97A1B46243700EEAA29 /* IDPNumberDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 8784D9711B46243700EEAA29 /* IDPNumberDisplay.m */; };
 		8784D97B1B46243700EEAA29 /* IDPNumpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8784D9731B46243700EEAA29 /* IDPNumpadView.m */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		875C40FB1C2D8CCC00F59018 /* DateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateViewController.h; sourceTree = "<group>"; };
+		875C40FC1C2D8CCC00F59018 /* DateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateViewController.m; sourceTree = "<group>"; };
 		8784D96E1B46243700EEAA29 /* EasyEaseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyEaseAnimation.h; sourceTree = "<group>"; };
 		8784D96F1B46243700EEAA29 /* EasyEaseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyEaseAnimation.m; sourceTree = "<group>"; };
 		8784D9701B46243700EEAA29 /* IDPNumberDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPNumberDisplay.h; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 				87AE535D1B4567F800E51108 /* AppDelegate.m */,
 				87AE535F1B4567F800E51108 /* ViewController.h */,
 				87AE53601B4567F800E51108 /* ViewController.m */,
+				875C40FB1C2D8CCC00F59018 /* DateViewController.h */,
+				875C40FC1C2D8CCC00F59018 /* DateViewController.m */,
 				87AE53621B4567F800E51108 /* Main.storyboard */,
 				87D174341B6A519B00E25B12 /* QueryViewController.h */,
 				87D174351B6A519B00E25B12 /* QueryViewController.m */,
@@ -277,6 +282,7 @@
 				8784D97E1B46243700EEAA29 /* IDPSNStyleKit.m in Sources */,
 				87D174391B6A6B8800E25B12 /* SearchViewController.m in Sources */,
 				87D174361B6A519B00E25B12 /* QueryViewController.m in Sources */,
+				875C40FD1C2D8CCC00F59018 /* DateViewController.m in Sources */,
 				87AE53611B4567F800E51108 /* ViewController.m in Sources */,
 				87AE535E1B4567F800E51108 /* AppDelegate.m in Sources */,
 				87F1C5E01B799DF9009A5C8C /* UnitDisplayController.m in Sources */,

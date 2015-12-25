@@ -29,6 +29,7 @@ typedef NS_ENUM(NSInteger, IDPNumpadViewControllerInputStyle )
 {
      IDPNumpadViewControllerInputStyleNumber
     ,IDPNumpadViewControllerInputStyleSerialNumber
+    ,IDPNumpadViewControllerInputStyleHourAndMinutes
 };
 
 @protocol IDPNumpadViewControllerDelegate;
@@ -47,6 +48,8 @@ typedef NS_ENUM(NSInteger, IDPNumpadViewControllerInputStyle )
 @property (assign,nonatomic) IDPNumpadViewControllerInputStyle inputStyle;
 @property (assign,nonatomic) CGFloat value;
 @property (strong,nonatomic) NSString *serialNumber;
+@property (strong,nonatomic) NSDate *baseDate;
+@property (strong,nonatomic) NSDate *date;
 @property (readonly,nonatomic) NSString *displayText;
 @property (weak,nonatomic) id<IDPNumpadViewControllerDelegate> delegate;
 @property (assign,nonatomic) BOOL hideNumberDisplay;

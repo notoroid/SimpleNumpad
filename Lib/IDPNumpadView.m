@@ -57,6 +57,7 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
     _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongPress:)];
     [self addGestureRecognizer:_longPressGestureRecognizer];
     _longPressGestureRecognizer.delegate = self;
+    _separatorUnit = @"-";
 }
 
 - (void) hiddenNumberSupportButton:(BOOL)hidden
@@ -188,7 +189,7 @@ static const NSString * CSSimpleNumpadAnimationViewKey  = @"CSSimpleNumpadAnimat
             [components addObject:string];
         }
         
-        text = [components componentsJoinedByString:@"-"];
+        text = [components componentsJoinedByString:self.separatorUnit];
     }
     
     return text;

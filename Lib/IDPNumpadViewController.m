@@ -8,6 +8,8 @@
 
 #import "IDPNumpadViewController.h"
 
+static NSDateFormatter *s_numpadViewControllerDateFormatter = nil;
+static NSDateFormatter *s_numpadViewControllerHourAndMinutesDateFormatter = nil;
 
 @interface IDPNumpadViewController () <UIGestureRecognizerDelegate>
 {
@@ -40,10 +42,31 @@
         // シリアル番号を格納
     
     if( _numpadView.inputStyle == IDPNumpadViewInputStyleSerialNumber ){
-        NSArray *components = [serialNumber componentsSeparatedByString:@"-"];
+        NSArray *components = [serialNumber componentsSeparatedByString:_numpadView.separatorUnit];
         _numpadView.text = [components componentsJoinedByString:@""];
         _numberDisplay.displayLabel.text = _numpadView.displayText;
     }
+}
+
+- (NSDate *)date
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        s_numpadViewControllerDateFormatter = [[NSDateFormatter alloc] init];
+        [s_numpadViewControllerDateFormatter setDateFormat:@"yyyy/MM/dd"];
+        
+        s_numpadViewControllerHourAndMinutesDateFormatter = [[NSDateFormatter alloc] init];
+        [s_numpadViewControllerHourAndMinutesDateFormatter setDateFormat:@"yyyy/MM/dd HH:mm"];
+    });
+    
+    NSDate *date = nil;
+    if( _serialNumber.length >= 5 ){
+        NSString *yearMonthDay = [s_numpadViewControllerDateFormatter stringFromDate:_baseDate != nil ? _baseDate : [NSDate date]];
+        NSString *string = [@[yearMonthDay,_serialNumber] componentsJoinedByString:@" "];
+        date = [s_numpadViewControllerHourAndMinutesDateFormatter dateFromString:string];
+    }
+    
+    return date;
 }
 
 + (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle
@@ -143,10 +166,19 @@
     if(_inputStyle == IDPNumpadViewControllerInputStyleNumber ) {
         _numpadView.text = [@(_value) description];
         _numberDisplay.displayLabel.text = _numpadView.displayText;
+    }else if(_inputStyle == IDPNumpadViewControllerInputStyleHourAndMinutes ) {
+        _numpadView.inputStyle = IDPNumpadViewInputStyleSerialNumber;
+        _numpadView.separatorIntervals = @[@2,@2];
+        _numpadView.separatorUnit = @":";
+        _numpadView.text = [[_serialNumber componentsSeparatedByString:_numpadView.separatorUnit] componentsJoinedByString:@""];
+        if( _numpadView.text == nil ){
+            _numpadView.text = @"";
+        }
+        _numberDisplay.displayLabel.text = _numpadView.displayText;
     }else if(_inputStyle == IDPNumpadViewControllerInputStyleSerialNumber ) {
         _numpadView.inputStyle = IDPNumpadViewInputStyleSerialNumber;
         _numpadView.separatorIntervals = self.separatorIntervals;
-        _numpadView.text = [[_serialNumber componentsSeparatedByString:@"-"] componentsJoinedByString:@""];
+        _numpadView.text = [[_serialNumber componentsSeparatedByString:_numpadView.separatorUnit] componentsJoinedByString:@""];
         if( _numpadView.text == nil ){
             _numpadView.text = @"";
         }
