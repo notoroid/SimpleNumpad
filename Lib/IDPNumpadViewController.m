@@ -132,6 +132,13 @@ static NSDateFormatter *s_numpadViewControllerHourAndMinutesDateFormatter = nil;
     return numpadViewController;
 }
 
++ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style baseDate:(NSDate *)baseDate
+{
+    IDPNumpadViewController *numpadViewController = [IDPNumpadViewController numpadViewControllerWithStyle:style inputStyle:IDPNumpadViewControllerInputStyleHourAndMinutes];
+    numpadViewController.baseDate = baseDate;
+    return numpadViewController;
+}
+
 
 - (void) setSearchViewController:(UIViewController *)searchViewController;
 {

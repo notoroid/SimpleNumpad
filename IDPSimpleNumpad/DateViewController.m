@@ -40,8 +40,7 @@ static NSDateFormatter *s_dateFormatter = nil;
 
 - (IBAction)onShowDate:(id)sender
 {
-    IDPNumpadViewController *viewController = [IDPNumpadViewController numpadViewControllerWithStyle:IDPNumpadViewControllerStyleDefault inputStyle:IDPNumpadViewControllerInputStyleHourAndMinutes showNumberDisplay:YES];
-    viewController.baseDate = [NSDate date];
+    IDPNumpadViewController *viewController = [IDPNumpadViewController numpadViewControllerWithStyle:IDPNumpadViewControllerStyleDefault baseDate:[NSDate date]];
     viewController.delegate = self;
     
     [self presentViewController:viewController animated:YES completion:^{
