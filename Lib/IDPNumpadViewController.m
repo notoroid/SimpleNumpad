@@ -409,13 +409,17 @@ static NSDateFormatter *s_numpadViewControllerHourAndMinutesDateFormatter = nil;
     
     if( _numberDisplay != nil ){
         CGPoint location = [gestureRecognizer locationInView:_numberDisplay.superview];
-        if( CGRectContainsPoint(_numberDisplay.frame, location)){
+        
+        CGRect hitTestRect = CGRectMake(CGRectGetMinX(self.view.frame), CGRectGetMinY(_numberDisplay.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(_numberDisplay.frame));
+        if( CGRectContainsPoint(hitTestRect, location)){
                 shouldBegin = NO;
         }
     }
     if( _numpadView != nil ){
         CGPoint location = [gestureRecognizer locationInView:_numpadView.superview];
-        if( CGRectContainsPoint(_numpadView.frame, location)){
+        
+        CGRect hitTestRect = CGRectMake(CGRectGetMinX(self.view.frame), CGRectGetMinY(_numpadView.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(_numpadView.frame));
+        if( CGRectContainsPoint(hitTestRect,location)){
             shouldBegin = NO;
         }
     }
