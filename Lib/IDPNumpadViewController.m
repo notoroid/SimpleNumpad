@@ -25,6 +25,10 @@ static NSDateFormatter *s_numpadViewControllerHourAndMinutesDateFormatter = nil;
     
     NSString *_serialNumber;
     
+    __weak IBOutlet NSLayoutConstraint *_numberDisplayTrailing;
+    __weak IBOutlet NSLayoutConstraint *_numberDisplayLeading;
+    __weak IBOutlet NSLayoutConstraint *_numPadTrailing;
+    __weak IBOutlet NSLayoutConstraint *_numPadLeading;
 }
 - (void) setSearchViewController:(UIViewController *)searchViewController;
 @end

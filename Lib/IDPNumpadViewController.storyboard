@@ -471,8 +471,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="_numPadLeading" destination="iYu-Ki-sA4" id="aAD-ig-RvB"/>
+                        <outlet property="_numPadTrailing" destination="GMP-P6-Gg4" id="Zns-Em-NIs"/>
                         <outlet property="_numberDisplay" destination="adt-SL-WNK" id="4yM-Lk-NE8"/>
                         <outlet property="_numberDisplayLabelTrailingConstraint" destination="fE7-EQ-KY7" id="Ac7-MM-ZCK"/>
+                        <outlet property="_numberDisplayLeading" destination="MRv-T8-Y3S" id="aGZ-9M-q4z"/>
+                        <outlet property="_numberDisplayTrailing" destination="8vf-wT-VB8" id="Rsy-Aj-P6B"/>
                         <outlet property="_numpadBottomConstraint" destination="kzM-6z-PBO" id="i1k-My-DNG"/>
                         <outlet property="_numpadView" destination="080-v7-qHE" id="vvI-TM-PSl"/>
                     </connections>
@@ -945,8 +949,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="_numPadLeading" destination="92e-Hj-ZDG" id="nRD-Dt-t1X"/>
+                        <outlet property="_numPadTrailing" destination="19e-dp-GFR" id="O8m-tV-jNf"/>
                         <outlet property="_numberDisplay" destination="nKB-c2-Efd" id="y8w-4U-y94"/>
                         <outlet property="_numberDisplayLabelTrailingConstraint" destination="k7P-sy-7dM" id="5do-xg-nFm"/>
+                        <outlet property="_numberDisplayLeading" destination="Mdi-hz-YE0" id="IYC-ON-6RU"/>
+                        <outlet property="_numberDisplayTrailing" destination="zei-tu-hvr" id="kHq-hB-auZ"/>
                         <outlet property="_numpadView" destination="7tU-X7-qrw" id="RWv-BU-Syg"/>
                     </connections>
                 </viewController>
@@ -1418,8 +1426,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="_numPadLeading" destination="epH-pm-Lrx" id="Bhh-uM-vZ3"/>
+                        <outlet property="_numPadTrailing" destination="kFA-fO-COZ" id="rL2-hX-iVa"/>
                         <outlet property="_numberDisplay" destination="c03-Jc-usb" id="9g0-aZ-H0J"/>
                         <outlet property="_numberDisplayLabelTrailingConstraint" destination="yud-GP-fNi" id="X83-Bw-2na"/>
+                        <outlet property="_numberDisplayLeading" destination="NmK-39-hGS" id="Qv8-Jl-QJT"/>
+                        <outlet property="_numberDisplayTrailing" destination="db3-1R-yoK" id="BPL-6N-nea"/>
                         <outlet property="_numpadBottomConstraint" destination="nc4-N4-6I4" id="hA5-Ra-b6a"/>
                         <outlet property="_numpadView" destination="Pqy-xd-xGT" id="MXE-gT-UcX"/>
                     </connections>
@@ -1891,8 +1903,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="_numPadLeading" destination="Mph-dQ-Z4j" id="mlF-nG-p2J"/>
+                        <outlet property="_numPadTrailing" destination="YX8-s7-9vm" id="oOp-b7-HmZ"/>
                         <outlet property="_numberDisplay" destination="61z-ty-155" id="ET8-b4-1ph"/>
                         <outlet property="_numberDisplayLabelTrailingConstraint" destination="ex3-uf-pmC" id="vaf-1u-aBV"/>
+                        <outlet property="_numberDisplayLeading" destination="m9a-s0-94d" id="90y-Dh-FBs"/>
+                        <outlet property="_numberDisplayTrailing" destination="hc1-Sn-mJe" id="LSI-s0-cqg"/>
                         <outlet property="_numpadBottomConstraint" destination="2Wd-A6-Hx8" id="k1c-VG-aPv"/>
                         <outlet property="_numpadView" destination="aDF-L6-rOG" id="J0f-On-Zmd"/>
                     </connections>
@@ -2365,8 +2381,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="_numPadLeading" destination="Bem-e9-vWR" id="zzc-eG-PHF"/>
+                        <outlet property="_numPadTrailing" destination="YXy-Ws-PDo" id="uyo-cr-5gs"/>
                         <outlet property="_numberDisplay" destination="wnw-7P-oiE" id="zqT-2I-nHg"/>
                         <outlet property="_numberDisplayLabelTrailingConstraint" destination="FEj-Z1-JFt" id="f4I-bt-yra"/>
+                        <outlet property="_numberDisplayLeading" destination="YmP-6I-zBP" id="ZDj-tJ-wQm"/>
+                        <outlet property="_numberDisplayTrailing" destination="z6g-SM-Sg8" id="gxz-CJ-abQ"/>
                         <outlet property="_numpadBottomConstraint" destination="Jio-MG-uwN" id="dXz-6G-yhM"/>
                         <outlet property="_numpadView" destination="qit-X4-0sY" id="MBU-uQ-U75"/>
                     </connections>
@@ -2839,8 +2859,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="_numPadLeading" destination="Xb2-Xx-Muw" id="GEp-dn-pMX"/>
+                        <outlet property="_numPadTrailing" destination="GUP-Qd-o8H" id="ZOa-qf-MQA"/>
                         <outlet property="_numberDisplay" destination="L53-UM-tdC" id="2je-LX-slO"/>
                         <outlet property="_numberDisplayLabelTrailingConstraint" destination="Y87-PG-sNu" id="oo0-7r-6Et"/>
+                        <outlet property="_numberDisplayLeading" destination="qJg-P5-4lr" id="9lx-QO-hht"/>
+                        <outlet property="_numberDisplayTrailing" destination="I6g-b9-F0Z" id="iC5-u5-hAg"/>
                         <outlet property="_numpadBottomConstraint" destination="J7N-vP-O52" id="Dxh-Pw-eg5"/>
                         <outlet property="_numpadView" destination="C8r-Ce-61C" id="QAc-pp-vCH"/>
                     </connections>
@@ -3312,8 +3336,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="_numPadLeading" destination="XaH-Ay-3A2" id="LAE-PV-blG"/>
+                        <outlet property="_numPadTrailing" destination="ZED-qR-9Tl" id="2GP-Xr-c0N"/>
                         <outlet property="_numberDisplay" destination="7wL-B6-Ft7" id="mH3-1b-HD3"/>
                         <outlet property="_numberDisplayLabelTrailingConstraint" destination="4Tk-fv-jAZ" id="u0i-bZ-CRY"/>
+                        <outlet property="_numberDisplayLeading" destination="BFU-x3-rpV" id="nbm-eE-1rk"/>
+                        <outlet property="_numberDisplayTrailing" destination="G35-1D-8Oq" id="GeA-nz-qoI"/>
                         <outlet property="_numpadBottomConstraint" destination="75A-bX-CJz" id="tWi-93-ZCR"/>
                         <outlet property="_numpadView" destination="qK9-bs-EKB" id="27z-gL-QAD"/>
                     </connections>
@@ -3786,8 +3814,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="_numPadLeading" destination="Aw5-OE-QCp" id="39V-LM-vi7"/>
+                        <outlet property="_numPadTrailing" destination="8Mt-iZ-A9l" id="LOP-gc-5ty"/>
                         <outlet property="_numberDisplay" destination="ecz-Z4-N0S" id="mjc-IN-bZR"/>
                         <outlet property="_numberDisplayLabelTrailingConstraint" destination="lD8-Cd-hGn" id="0d8-Fo-ZFO"/>
+                        <outlet property="_numberDisplayLeading" destination="gJo-pS-KWv" id="n2x-ag-x1S"/>
+                        <outlet property="_numberDisplayTrailing" destination="5ji-N9-x0u" id="NrM-qe-FRc"/>
                         <outlet property="_numpadBottomConstraint" destination="h39-ZC-Oye" id="r3v-bR-cOJ"/>
                         <outlet property="_numpadView" destination="L5X-TF-Z9f" id="3HX-OF-26x"/>
                     </connections>
@@ -4259,8 +4291,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="_numPadLeading" destination="APl-jj-Vet" id="u4k-6e-VJB"/>
+                        <outlet property="_numPadTrailing" destination="fGq-RF-WHM" id="lpy-ZY-fFA"/>
                         <outlet property="_numberDisplay" destination="pxe-Tb-yxX" id="IIX-eO-T6H"/>
                         <outlet property="_numberDisplayLabelTrailingConstraint" destination="Zr6-zq-TBB" id="zub-DV-RvX"/>
+                        <outlet property="_numberDisplayLeading" destination="uHQ-MN-qek" id="kmf-7Y-dGx"/>
+                        <outlet property="_numberDisplayTrailing" destination="KvF-cf-Tsy" id="OiA-hM-0fh"/>
                         <outlet property="_numpadBottomConstraint" destination="CTH-ms-Gp8" id="Bb8-5t-FqU"/>
                         <outlet property="_numpadView" destination="qhX-eI-6J8" id="cWk-B0-s51"/>
                     </connections>
@@ -4733,8 +4769,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="_numPadLeading" destination="ahY-cO-p3H" id="qch-Yb-cxv"/>
+                        <outlet property="_numPadTrailing" destination="2on-EI-yr9" id="urA-1J-I72"/>
                         <outlet property="_numberDisplay" destination="CVB-x8-Led" id="lNS-hk-FYx"/>
                         <outlet property="_numberDisplayLabelTrailingConstraint" destination="iGg-xx-51e" id="LvR-Tp-KQZ"/>
+                        <outlet property="_numberDisplayLeading" destination="wR1-2r-PDk" id="zAA-oF-ybx"/>
+                        <outlet property="_numberDisplayTrailing" destination="hIs-62-B8G" id="IpB-Sr-Oeu"/>
                         <outlet property="_numpadBottomConstraint" destination="tay-iQ-JWf" id="FhO-xu-BaG"/>
                         <outlet property="_numpadView" destination="8IO-91-MK1" id="4R8-IN-Qd7"/>
                     </connections>
@@ -5219,8 +5259,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="_numPadLeading" destination="DYM-hP-4tc" id="Q2C-kw-gpv"/>
+                        <outlet property="_numPadTrailing" destination="Kyn-S3-JnI" id="mdx-jr-E7n"/>
                         <outlet property="_numberDisplay" destination="DK9-lG-bY3" id="n0I-Ng-yOn"/>
                         <outlet property="_numberDisplayLabelTrailingConstraint" destination="KVN-Mc-BRL" id="QVo-6n-HiT"/>
+                        <outlet property="_numberDisplayLeading" destination="nYO-S6-0Sf" id="QOR-5n-k7v"/>
+                        <outlet property="_numberDisplayTrailing" destination="xqG-29-b7s" id="k0B-Uv-ter"/>
                         <outlet property="_numpadBottomConstraint" destination="Qhb-R8-9gc" id="JDn-Fv-N4R"/>
                         <outlet property="_numpadView" destination="eoD-RY-CKT" id="Q51-Nl-UKv"/>
                     </connections>
