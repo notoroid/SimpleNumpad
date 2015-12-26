@@ -3917,7 +3917,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Byc-d2-SsL">
                                 <rect key="frame" x="0.0" y="273" width="375" height="394"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhX-eI-6J8" customClass="IDPNumpadView">
                                 <rect key="frame" x="0.0" y="375" width="375" height="292"/>
