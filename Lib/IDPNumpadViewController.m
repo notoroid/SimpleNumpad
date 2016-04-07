@@ -29,11 +29,29 @@ static NSDateFormatter *s_numpadViewControllerHourAndMinutesDateFormatter = nil;
     __weak IBOutlet NSLayoutConstraint *_numberDisplayLeading;
     __weak IBOutlet NSLayoutConstraint *_numPadTrailing;
     __weak IBOutlet NSLayoutConstraint *_numPadLeading;
+    
+    CGFloat _value;
 }
 - (void) setSearchViewController:(UIViewController *)searchViewController;
 @end
 
 @implementation IDPNumpadViewController
+
+- (CGFloat) value
+{
+    return _value;
+}
+
+- (void) setValue:(CGFloat)value
+{
+    if( _value != value ){
+        _value = value;
+        if(_inputStyle == IDPNumpadViewControllerInputStyleNumber ) {
+            _numpadView.text = [@(_value) description];
+            _numberDisplay.displayLabel.text = _numpadView.displayText;
+        }
+    }
+}
 
 - (NSString *)serialNumber
 {
