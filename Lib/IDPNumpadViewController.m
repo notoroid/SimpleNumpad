@@ -134,9 +134,9 @@ static NSDateFormatter *s_numpadViewControllerHourAndMinutesDateFormatter = nil;
     return [IDPNumpadViewController numpadViewControllerWithStyle:style searchViewController:searchViewController unitDisplayController:nil inputStyle:IDPNumpadViewControllerInputStyleSerialNumber showNumberDisplay:showNumberDisplay];
 }
 
-+ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle )style searchViewController:(UIViewController *)searchViewController unitDisplayController:(UIViewController<IDPNumpadViewControllerUnitViewControllerProtocol> *) unitDisplayController inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle showNumberDisplay:(BOOL)showNumberDisplay
++ (IDPNumpadViewController *)numpadViewControllerWithStyle:(IDPNumpadViewControllerStyle)style searchViewController:(UIViewController *)searchViewController unitDisplayController:(UIViewController<IDPNumpadViewControllerUnitViewControllerProtocol> *) unitDisplayController inputStyle:(IDPNumpadViewControllerInputStyle)inputStyle showNumberDisplay:(BOOL)showNumberDisplay
 {
-    IDPNumpadViewController *numpadViewController = [IDPNumpadViewController numpadViewControllerWithStyle:style inputStyle:IDPNumpadViewControllerInputStyleSerialNumber];
+    IDPNumpadViewController *numpadViewController = [IDPNumpadViewController numpadViewControllerWithStyle:style inputStyle:inputStyle];
     if( showNumberDisplay != YES ){
         numpadViewController.hideNumberDisplay = YES;
     }

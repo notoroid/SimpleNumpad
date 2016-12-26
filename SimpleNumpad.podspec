@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SimpleNumpad"
-  s.version      = "0.7"
+  s.version      = "0.8"
   s.summary      = "SimpleNumpad provides a simple Numpad to your app . iOS8 it will support later ."
 
   s.description  = <<-DESC
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/notoroid/SimpleNumpad.git", :tag => "v0.7" }
+  s.source       = { :git => "https://github.com/notoroid/SimpleNumpad.git", :tag => "v#{s.version}" }
 
   s.source_files  = "Lib/**/*.{h,m}"
   s.resources  = "Lib/**/*.{storyboard,xib}"
