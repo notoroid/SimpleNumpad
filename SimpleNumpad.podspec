@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SimpleNumpad"
-  s.version      = "0.8.1"
+  s.version      = "0.9"
   s.summary      = "SimpleNumpad provides a simple Numpad to your app . iOS8 it will support later ."
 
   s.description  = <<-DESC
