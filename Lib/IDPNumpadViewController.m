@@ -111,7 +111,8 @@ static NSDateFormatter *s_numpadViewControllerHourAndMinutesDateFormatter = nil;
 
         
         NSString *identifier = styles[@(style)];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"IDPNumpadViewController" bundle:nil];
+        NSBundle *frameworkBundle = [NSBundle bundleForClass:[IDPNumpadViewController class]];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"IDPNumpadViewController" bundle:frameworkBundle];
         viewController = [storyboard  instantiateViewControllerWithIdentifier:identifier != nil ? identifier : styles[@(IDPNumpadViewControllerStyleDefault)]];
    
         IDPNumpadViewController *numpadViewController = viewController;
